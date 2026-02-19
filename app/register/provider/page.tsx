@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { useLanguage } from "@/lib/language-context";
@@ -9,6 +10,11 @@ import type { TranslationKey } from "@/lib/translations";
 
 export default function ProviderRegistrationPage() {
   const { t } = useLanguage();
+  const router = useRouter();
+
+  const handleRegister = () => {
+    router.push("/register/provider/subscription");
+  };
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -88,6 +94,7 @@ export default function ProviderRegistrationPage() {
             </div>
             <button
               type="button"
+              onClick={handleRegister}
               className="mt-2 w-full rounded-lg bg-primary py-3 text-sm font-semibold text-primary-foreground hover:opacity-90"
             >
               {t("registerCompany")}
